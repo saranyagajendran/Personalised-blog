@@ -39,6 +39,7 @@
         .navbar ul li {
             display: inline;
             margin-right: 20px;
+            text-align: justify;
          
         }
 
@@ -55,14 +56,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 7%;
+            margin-top: 3%;
         }
         
         .form1 {
-            width: 400px;
+            width: 420px;
             /* Set width for form container */
            /* Center align horizontally */
-            padding: 20px;
+            padding: 50px;
             
             /* Add padding */
             background-color: rgba(255, 255, 255, 0.8); /* Add background color with opacity */
@@ -131,6 +132,7 @@
 </head>
 
 <body>
+    
     <div class="navbar">
         <ul class="bg">
             <li><a href="/register">REGISTER</a></li>
@@ -139,12 +141,20 @@
             <li><a href="/">HOME</a></li>
         </ul>
     </div>
-   
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
   
     <div class="form"> 
         <div class="form1">
           <h1>Create an Account</h1>
-        <form id="register" method="POST" action="/" onsubmit="event.preventDefault(); register();">
+        <form id="register" method="POST" action="/">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
 
@@ -158,7 +168,7 @@
             <input type="password" id="password" name="password" required>
             <span id="password-error" class="error"></span>
 
-            <button id="register-btn" type="submit">Create</button>
+            <button type="submit">Create</button>
         </form>
         <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
         

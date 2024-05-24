@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,session,flash
+from flask import Flask, render_template, request,session,flash,redirect,url_for
 from flask_pymongo import PyMongo,MongoClient
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -21,7 +21,7 @@ db=client['Blog']
 def home():
     
    if request.method=='POST':
-        existing_user = db.user.find_one({'name': request.form['name']})
+        existing_user = db.user.find_one({'email': request.form['email']})
         if existing_user is None:
             name=request.form['name']
             phone_no=request.form['phone']
@@ -30,10 +30,12 @@ def home():
             query={'name':name}
             doc ={'$set':{'email':email,'name':name,"phone_no":phone_no,"password":hash_pass}}
             db.user.update_one(query,doc,upsert=True)
+            flash("Registered Successfully",'success')
             # mongo.db.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
             return render_template('home.html')
         else:
-            return 'User already exists!'
+            flash("User already exists!","danger")
+            return redirect(url_for('home'))
    else:
             return render_template('home.html')
 
