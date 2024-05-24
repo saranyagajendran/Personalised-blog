@@ -18,6 +18,7 @@
 
         .dashboard {
             margin-top: 10%;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         form {
@@ -28,11 +29,14 @@
             border-radius: 10px; /* Add border radius */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
             text-align: left; /* Left align form elements */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         h2{
             font-size: 30px;
             text-align: center;
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         label {
@@ -44,11 +48,13 @@
 
         input[type="text"],
         input[type="password"] {
-            width: 90%; /* Make inputs full-width */
+            width: 95%; /* Make inputs full-width */
             padding: 10px; /* Add padding for inputs */
             margin-bottom: 15px; /* Add bottom margin for inputs */
             border-radius: 5px; /* Add border radius */
             border: 1px solid #ccc; /* Add border */
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         button[type="submit"] {
@@ -59,27 +65,43 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-     /* Change hover background color */
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
         }
 
         p {
-            margin-top: 20px; /* Add top margin for paragraph */
+            margin-top: 20px; 
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
         
         a {
             color: #007bff; /* Change link color */
-            text-decoration: none; /* Remove underline from link */
-            font-weight: bold; /* Add bold font weight */
+            text-decoration: none;
+            font-weight: bold; 
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         a:hover {
             text-decoration: underline; /* Add underline on hover */
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
         
         .button-container {
-            text-align: right;
+            text-align: center;
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            
              /* Center align contents */
         }
+    
+
+button:hover {
+background-color: #45a049;
+
+}
     </style>
 </head>
 
@@ -94,9 +116,9 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <div class="fp">
+        <!-- <div class="fp">
             <a href="/forgot-password" class="small">Forgot Password?</a>
-        </div>
+        </div> -->
        
         <div class="button-container">
             <button type="submit">Login</button>

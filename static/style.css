@@ -47,8 +47,8 @@ text-decoration: none;
 
 }
 
-.showcase .content {
-    text-align: center;
+/* .showcase .content {
+    text-align: center; */
 }
 
 .container {
@@ -80,6 +80,6 @@ text-decoration: none;
 }
 .content  {
     font-size: large;
-    margin-top: 18%;
+    margin-top: 17%;
     font-weight: bold;
 }
