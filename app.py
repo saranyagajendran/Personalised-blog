@@ -32,7 +32,7 @@ def home():
             db.user.update_one(query,doc,upsert=True)
             flash("Registered Successfully!!")
             # mongo.db.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
-            return render_template('dashboard.html')
+            return render_template('home.html')
         else:
             flash("User already exists!!.Please login to continue","danger")
             return redirect(url_for('login'))

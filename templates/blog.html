@@ -12,7 +12,7 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    background-image: url("/static/viewblog.jpg"); /* Replace 'your_image.jpg' with the path to your background image */
+    background-image: url("/static/bge.jpg"); /* Replace 'your_image.jpg' with the path to your background image */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
   }
@@ -23,18 +23,27 @@
         .modal-content.success .modal-body,
         .modal-content.success .modal-footer {
             color: #155724; /* Dark green text */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      
         }
   form {
     width: 50%; /* Adjust width as needed */
     max-width: 600px; /* Set maximum width */
   }
   div {
-    margin-bottom: 20px;
+    margin-top: 140px;
+    margin-bottom: 10px;
+    /* btw label */
   }
   label {
+    margin-top: 5px;
+    /* write */
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
+    /* below label write and text */
     font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
   }
   input[type="text"],
   textarea {
@@ -43,26 +52,48 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
+        
   }
 
 
   button {
-    background-color: #4cacaf;
-    color: white;
+    background-color: #25cfd4;
+    color: black;
+    font-weight: bold;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+
     border-radius: 5px;
     text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
+  }
+  button:hover
+  {
+    background-color: rgb(44, 184, 189);
+  }
+  .header{
+    margin-top: 50%;
+    
+  }
+  .h2
+  {
+    margin-top: -1%;
+    margin-bottom: 10px;
   }
 </style>
 <body>
   <form action="/launch" method="POST" onsubmit="launchBlog();">
-    <div>
+    <div class="header">
       <label for="title">Name your blog</label>
       <input type="text" id="title" name="title" required />
     </div>
-    <div>
+    <div class="h2">
       <label for="content">Write your post</label>
       <textarea id="content" name="content" rows="8" required></textarea>
     </div>
