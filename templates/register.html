@@ -71,6 +71,9 @@
             text-align: left; /* Left align form elements */
             position: relative; /* Set form position to relative */
             z-index: 1; /* Set z-index higher than background image */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: large;
+            
             
         }
 
@@ -93,9 +96,10 @@
             width: 95%;
             padding: 9px;
             margin-bottom: 15px; 
-            
+            font-size: smaller;
             border-radius: 5px; /* Add border radius */
             border: 1px solid #ccc; /* Add border */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
 
@@ -111,13 +115,15 @@
         }
 
         .success-msg {
-            color: green;
+            color: green; 
             margin-top: 10px;
         }
-        .p
-    {
+        p{
         font-weight: bold; 
-    }
+         
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+      
 
         button {
             background-color: #0aa50a;
@@ -127,8 +133,18 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
+            width: fit-content;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: larger;
         }
+        .button-container {
+            text-align: center;
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            
+             /* Center align contents */
+        }
+    
 
         button:hover {
             background-color: #45a049;
@@ -172,9 +188,10 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
             <span id="password-error" class="error"></span>
-
-            <button type="submit">Create</button>
+        <div class=" button-container">
+            <button type="submit">Create</button></div>
         </form>
+    
         <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
         
       </div>

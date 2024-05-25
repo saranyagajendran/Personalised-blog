@@ -47,9 +47,10 @@ text-decoration: none;
 
 }
 
-/* .showcase .content {
-    text-align: center; */
+.showcase .content {
+    text-align: center;
 }
+
 
 .container {
     max-width: 1200px;
@@ -79,7 +80,8 @@ text-decoration: none;
     border-radius: 50%;
 }
 .content  {
-    font-size: large;
+    font-size: larger;
     margin-top: 17%;
     font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

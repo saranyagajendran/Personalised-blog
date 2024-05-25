@@ -12,7 +12,7 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    background-image: url("/static/bg_2.jpeg"); /* Replace 'your_image.jpg' with the path to your background image */
+    background-image: url("/static/viewblog.jpg"); /* Replace 'your_image.jpg' with the path to your background image */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
   }
@@ -57,7 +57,7 @@
   }
 </style>
 <body>
-  <form action="/launch" method="POST" onsubmit="event.preventDefault(); launchBlog();">
+  <form action="/launch" method="POST" onsubmit="launchBlog();">
     <div>
       <label for="title">Name your blog</label>
       <input type="text" id="title" name="title" required />
