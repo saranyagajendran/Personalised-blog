@@ -30,12 +30,12 @@ def home():
             query={'name':name}
             doc ={'$set':{'email':email,'name':name,"phone_no":phone_no,"password":hash_pass}}
             db.user.update_one(query,doc,upsert=True)
-            flash("Registered Successfully",'success')
+            flash("Registered Successfully!!")
             # mongo.db.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
-            return render_template('home.html')
+            return render_template('dashboard.html')
         else:
-            flash("User already exists!","danger")
-            return redirect(url_for('home'))
+            flash("User already exists!!.Please login to continue","danger")
+            return redirect(url_for('login'))
    else:
             return render_template('home.html')
 
@@ -66,9 +66,11 @@ def dashboard():
                 session["uname"]=name
                 return render_template('dashboard.html',name=name)
             else:
-                return "Invalid username/password combination"
+                flash("Invalid username/password combination")
+                return redirect(url_for('login'))    
         else:
-            return 'Username not found.Please Register'
+            flash("Username not found.Please Register")
+            return redirect(url_for('login'))
     else:
         if "uname"in session:
             name=session["uname"]
