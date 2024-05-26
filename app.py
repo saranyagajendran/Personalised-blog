@@ -2,10 +2,17 @@ from flask import Flask, render_template, request,session,flash,redirect,url_for
 from flask_pymongo import PyMongo,MongoClient
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_mail import Mail, Message
+import secrets,datetime
+
 app = Flask(__name__)
 app.secret_key="Meghana123"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/sample"
-mongo =PyMongo(app)
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.getenv('email')
+app.config['MAIL_PASSWORD'] =os.getenv('password')
+mail = Mail(app)
 from dotenv import load_dotenv
 
 
@@ -16,6 +23,7 @@ def config():
 app.config["MONGO_URI"] = os.getenv('mongo_url')
 client=MongoClient(os.getenv('mongo_url'))
 db=client['Blog']
+tdb=client['token']
 
 @app.route('/',methods=["GET","POST"])
 def home():
@@ -34,14 +42,33 @@ def home():
             # mongo.db.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
             return render_template('home.html')
         else:
-            flash("User already exists!!.Please login to continue","danger")
+            flash("User already exists!!.Please login to continue")
             return redirect(url_for('login'))
    else:
             return render_template('home.html')
 
+@app.route('/forgot-password')
+def forgot():
+    return render_template('forgotpass.html')
+
+@app.route('/reset-password',methods=['GET','POST'])
+def reset():
+    if request.method=='POST':
+        user = db.user.find_one({'email': request.form['email']})
+        if user:
+            token=secrets.token_urlsafe(32)
+            msg = Message('Password Reset Link', sender=os.getenv('email'), recipients=user['email'])
+            msg.body = f"Click the link to reset your password: https://personalblog.com/reset-password?token={token}"
+            mail.send(msg)
+            tdb.reset.insert_one({'email':user['email'],'token':token,'timestamp':datetime.datetime.now()})
+            return "Password reset link sent successfully!"
+        else:
+            return ("User not Registered. please enter your registered emial")
+        
+
+            
 @app.route('/register')
 def register():
-   
     return render_template('register.html')
 
 @app.route('/login')

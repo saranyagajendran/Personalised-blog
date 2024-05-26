@@ -4,16 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <title>Login Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* Change font family */
-            text-align: center; /* Center align the content */
-            background-image: url('/static/bgr.jpeg'); /* Set background image */
-            background-size: cover; /* Cover the entire viewport */
-            
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            font-family: Arial, sans-serif;
+            /* Change font family */
+            text-align: center;
+            /* Center align the content */
+            background-image: url('/static/bgr.jpeg');
+            /* Set background image */
+            background-size: cover;
+            /* Cover the entire viewport */
+
+            margin: 0;
+            /* Remove default margin */
+            padding: 0;
+            /* Remove default padding */
         }
 
         .dashboard {
@@ -23,20 +30,27 @@
         }
 
         form {
-            width: 400px; /* Set width for form container */
-            margin: 0 auto; /* Center align horizontally */
-            padding: 20px; /* Add padding */
-            background-color: rgba(255, 255, 255, 0.8); /* Add background color with opacity */
-            border-radius: 10px; /* Add border radius */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
-            text-align: left; /* Left align form elements */
+            width: 400px;
+            /* Set width for form container */
+            margin: 0 auto;
+            /* Center align horizontally */
+            padding: 20px;
+            /* Add padding */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Add background color with opacity */
+            border-radius: 10px;
+            /* Add border radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* Add shadow */
+            text-align: left;
+            /* Left align form elements */
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
-        h2{
+        h2 {
             font-size: 30px;
             text-align: center;
-            
+
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
@@ -44,16 +58,21 @@
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
-            
+
         }
 
         input[type="text"],
         input[type="password"] {
-            width: 95%; /* Make inputs full-width */
-            padding: 10px; /* Add padding for inputs */
-            margin-bottom: 15px; /* Add bottom margin for inputs */
-            border-radius: 5px; /* Add border radius */
-            border: 1px solid #ccc; /* Add border */
+            width: 95%;
+            /* Make inputs full-width */
+            padding: 10px;
+            /* Add padding for inputs */
+            margin-bottom: 15px;
+            /* Add bottom margin for inputs */
+            border-radius: 5px;
+            /* Add border radius */
+            border: 1px solid #ccc;
+            /* Add border */
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: larger;
         }
@@ -65,65 +84,84 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            
+
             font-size: large;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  
+
         }
 
         p {
-            margin-top: 20px; 
+            margin-top: 20px;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: large;
-            font-weight: bold; 
+            font-weight: bold;
         }
-        
+
         a {
             /* color: #007bff;  */
-            font-weight: bold; 
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         a:hover {
-            text-decoration: underline; /* Add underline on hover */
-     }
-        
+            text-decoration: underline;
+            /* Add underline on hover */
+        }
+
         .button-container {
             text-align: center;
-            
+
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            
-             /* Center align contents */
+
+            /* Center align contents */
         }
-    
-
-button:hover {
-background-color: #0d8513;
-
+        .far.fa-eye {
+    margin-left: -30px;
+    cursor: pointer;
 }
+
+
+        button:hover {
+            background-color: #0d8513;
+
+        }
     </style>
 </head>
 
 <body>
     <div class="dashboard">
-    <form action="/dashboard" method="POST">
+        <form action="/dashboard" method="POST">
             <h2>Login</h2>
             <label for="name">Email_id:</label>
             <input type="text" id="name" name="email" required>
-       
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <!-- <div class="fp">
-            <a href="/forgot-password" class="small">Forgot Password?</a>
-        </div> -->
-       
-        <div class="button-container">
-            <button type="submit">Login</button>
-        </div>
-      
-        <p>Don't have an account? <a href="{{ url_for('register') }}">Create an Account</a></p>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+            </div>
+            <script>
+                const togglePassword = document.querySelector('#togglePassword');
+                const password = document.querySelector('#password');
+
+                togglePassword.addEventListener('click', function (e) {
+                    // Toggle the type attribute
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+
+                    // Toggle the eye slash icon
+                    this.classList.toggle('fa-eye-slash');
+                });
+            </script>
+            <div class="fp">
+                <a href="/forgot-password" class="small">Forgot Password?</a>
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Login</button>
+            </div>
+
+            <p>Don't have an account? <a href="{{ url_for('register') }}">Create an Account</a></p>
     </div>
     </form>
     </div>

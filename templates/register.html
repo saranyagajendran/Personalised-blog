@@ -154,6 +154,16 @@
         <li><a href="/">HOME</a></li>
       </ul>
     </div>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <script>alert("{{messages[0]}}")</script>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}   
 
     <div class="form">
       <div class="form1">
