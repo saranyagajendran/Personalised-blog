@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <title>Register</title>
     <style>
       body {
@@ -138,6 +139,28 @@
 
         /* Center align contents */
       }
+      .far.fa-eye {
+    margin-left: -30px;
+    cursor: pointer;
+     }
+     .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input {
+            width: calc(100% - 30px);
+        }
+
+        .password-container i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #333;
+        }
+
 
       button:hover {
         background-color: #0d8513;
@@ -177,14 +200,30 @@
 
           <label for="email">Email ID</label>
           <input type="email" id="email" name="email" required />
-
+          <div class="password-container">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required />
+          <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+        </div>
+          <script>
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+  
+            togglePassword.addEventListener('click', function (e) {
+                // Toggle the type attribute
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+  
+                // Toggle the eye slash icon
+                this.classList.toggle('fa-eye-slash');
+            });
+        </script>
           <span id="password-error" class="error"></span>
           <div class="button-container">
             <button type="submit">Create</button>
           </div>
         </form>
+        
 
         <p>
           Already have an account? <a href="{{ url_for('login') }}">Login</a>
