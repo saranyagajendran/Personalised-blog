@@ -1,16 +1,10 @@
 from flask import Flask, render_template, request,session,flash,redirect,url_for
-from flask_pymongo import PyMongo,MongoClient
+from flask_pymongo import MongoClient
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key="Meghana123"
-from dotenv import load_dotenv
-
-
-def config():
-    load_dotenv()
-
 
 app.config["MONGO_URI"] = os.getenv('mongo_url')
 client=MongoClient(os.getenv('mongo_url'))
